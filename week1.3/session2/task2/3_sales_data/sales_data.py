@@ -9,6 +9,19 @@
 #   - the widget which has been sold the most
 # and print these out in a nice, human-readable format
 
+dates = []
+products = []
+sales_amount = []
+units = []
+region = []
+
+sales_data = {
+    "Date" : dates
+    "Products" : products
+    "Sales Amount": sales_amount
+}
+
+with open("sales.csv", "r") as file:
 
 # additional: you can calculate other sales statistics such as:
 # - total sales for each region
