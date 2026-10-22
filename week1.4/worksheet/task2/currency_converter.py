@@ -19,9 +19,20 @@ def currency_converter(amount, from_currency, to_currency):
     }
 
     # your code here
+    multiplier = conversion_rate.get(from_currency)
+    conversions = multiplier.get(to_currency)
 
-    return None
+    output = (amount * conversions)
+    output = float(output)
+    output = round(output, 2)
+
+    if amount < 0:
+        return 0.0
+    else:
+
+        return output
 
 # Submit only this file currency_converter.py with the completed function.
 
 # Remove any additional code you may have added during development and testing.
+
