@@ -43,11 +43,14 @@ class Circle:
         self.radius = radius
     
     def area(self):
-        return math.pi * (self.radius**2)
+        area = math.pi * (self.radius**2)
+        area = round(area, 2)
+        return area
 
     def perimeter(self):
-        return math.pi * 2 * self.radius
-
+        perimeter = math.pi * 2 * self.radius
+        perimeter = round(perimeter, 2)
+        return perimeter
 
 
 # Don't add any testing code to this file!
