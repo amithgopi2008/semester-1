@@ -1,41 +1,52 @@
-# Week 1.6, Session 1: Task 3
-
 import math
-from point import Point
+from shapes import Shape          
+from point import Point           
 
-VALID_COLOURS = {"red", "orange", "yellow", "green", "blue", "purple"}
 
-
-class Shape:
+class Circle(Shape):
     """
-    Superclass for different types of shape.
+    A circle with a radius, position and colour.
     """
 
-    def __init__(self, position, colour):
+    def __init__(self, radius, position, colour="red"):
         """
-        Creates a shape with the specified position & colour.
+        Creates a Circle with the given radius, position and colour.
+
+        Raises:
+            TypeError: if radius is not int or float.
+            ValueError: if radius is not greater than zero.
         """
-        self.set_position(position)
-        self.set_colour(colour)
+        super().__init__(colour, position)   
+        self.set_radius(radius)              
 
-    def set_position(self, position):
+    def set_radius(self, radius):
         """
-        Moves this shape to the given position.
+        Sets the radius of this Circle.
+
+        Raises:
+            TypeError: if radius is not int or float.
+            ValueError: if radius is not greater than zero.
         """
-        if not isinstance(position, Point):
-            raise TypeError("position must be a Point")
+        if not isinstance(radius, (int, float)) or isinstance(radius, bool):
+            raise TypeError(f"radius must be int or float, got {type(radius).__name__}")
+        if radius <= 0:
+            raise ValueError(f"radius must be greater than zero, got {radius}")
+        self.radius = radius
 
-        self.position = position
-
-    def set_colour(self, colour):
+    def __str__(self):
         """
-        Sets this shape's colour to the given colour.
+        Returns a string like 'red circle, radius 2.5, at (0.0, 0.0)'.
         """
-        if colour not in VALID_COLOURS:
-            raise ValueError(f"invalid color: must be one of {VALID_COLOURS}")
+        return f"{self.colour} circle, radius {self.radius}, at {self.position}"
 
-        self.colour = colour
+    def area(self):
+        """
+        Returns the area of this Circle.
+        """
+        return math.pi * self.radius ** 2
 
-
-# Implement your Circle class here
-# Make sure that it inherits properly from Shape!
+    def perimeter(self):
+        """
+        Returns the perimeter (circumference) of this Circle.
+        """
+        return 2 * math.pi * self.radius

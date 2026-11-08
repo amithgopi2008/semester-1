@@ -1,16 +1,19 @@
-# Week 4, Session 1
-
-# You are given the function mystery_func. 
-# Inspect the code in the function
-# Your task is to write a corresponding docstring
-# - what the function does 
-# - what is the input data and type
-# - what is the return value and type
-
-
-# function implementation
-
 def mystery_func(string):
+    """
+    Counts the number of uppercase and lowercase letters in a string.
+
+    Iterates over each character in the input and tallies how many are
+    uppercase letters and how many are lowercase letters. Non-alphabetic
+    characters (digits, spaces, punctuation, symbols) are ignored and
+    contribute to neither count.
+
+    Args:
+        string (str): The string to analyze.
+
+    Returns:
+        tuple of int: A tuple (upper, lower) where `upper` is the count of
+        uppercase letters and `lower` is the count of lowercase letters.
+    """
     upper = 0
     lower = 0
 
@@ -20,19 +23,3 @@ def mystery_func(string):
         if ch.islower():
             lower += 1
     return (upper, lower)
-
-
-# testing
-
-print(mystery_func("abc"))
-print(mystery_func("The quick Brown Fox!"))
-print(mystery_func("012345"))
-print(mystery_func("ABC"))
-
-
-# Can you predict the output of the following lines of code?
-# Uncomment the lines of code one by one and run the program
-# to see if you are right?
-
-# print(mystery_func("X"))
-# print(mystery_func("[2, 3]"))

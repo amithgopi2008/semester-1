@@ -33,7 +33,30 @@ def income_tax_calculator(annual_income):
         one decimal point. You can use the round() function,
         e.g round(tax, 1) 0.0 if annual_income is not a positive integer.
     """
+    if not isinstance(annual_income, (int, float)) or isinstance(annual_income, bool):
+        return 0.0
+    if annual_income <= 0:
+        return 0.0
 
+    tax = 0.0
+
+    # Personal allowance: first £12,570 tax-free
+    if annual_income > 12570:
+        # Basic rate: 20% on income between 12,570 and 50,270
+        basic_taxable = min(annual_income, 50270) - 12570
+        tax += basic_taxable * 0.20
+
+    if annual_income > 50270:
+        # Higher rate: 40% on income between 50,270 and 125,140
+        higher_taxable = min(annual_income, 125140) - 50270
+        tax += higher_taxable * 0.40
+
+    if annual_income > 125140:
+        # Additional rate: 45% on income above 125,140
+        additional_taxable = annual_income - 125140
+        tax += additional_taxable * 0.45
+
+    return round(tax, 1)
 
 # Check if the following lines produce the correct output
 print(income_tax_calculator(12000))     # 0.0

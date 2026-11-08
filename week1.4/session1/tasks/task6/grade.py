@@ -1,10 +1,3 @@
-# Week 4, Session 1: Task 3
-
-# You are given function calculate_grade and a docstring.
-# Your task is to write the body of the function based on the
-# details in the docstring
-
-
 def calculate_grade(marks):
     """
     This function returns a grade based on the provided mark, according to
@@ -32,13 +25,22 @@ def calculate_grade(marks):
         None: If `marks` is not a valid integer or is outside the allowed
               range (greater than 100 or negative)
     """
-    pass
+    # Validity checks
+    if not isinstance(marks, int) or isinstance(marks, bool):
+        return None
+    if marks < 0 or marks > 100:
+        return None
+
+    # Grading scale
+    if marks < 50:
+        grade = 'F'
+    elif marks < 60:
+        grade = 'D'
+    elif marks < 70:
+        grade = 'C'
+    elif marks < 80:
+        grade = 'B'
+    else:
+        grade = 'A'
 
     return grade
-
-
-# Check if the following tests produce the correct output
-print(calculate_grade(39))
-print(calculate_grade(55))
-print(calculate_grade(-20))
-print(calculate_grade(100))

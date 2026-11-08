@@ -1,8 +1,22 @@
-# Week 1.6, Session 1: Task 5
+from feed import QuakeFeed
+from dataset import QuakeDataset
 
-# Write a program here that uses the QuakeFeed and QuakeDataset
-# classes to download earthquake data from a USGS data feed,
-# analyze it and display the results
+level = input("Enter significance level (e.g. 4.5): ").strip()
+period = input("Enter time period (e.g. week): ").strip()
 
-# See README.md for full details of what is required and what
-# program output should look like
+feed = QuakeFeed(level, period)
+dataset = QuakeDataset(feed)
+
+dataset.read_feed()
+
+print(dataset)                                    
+print(f"Mean depth = {dataset.mean_depth():.2f} km")
+print(f"Mean magnitude = {dataset.mean_magnitude():.1f}")
+
+strongest = dataset.strongest_quake()
+print()
+print(f"Strongest quake occurred at {strongest.time.strftime('%H:%M:%S')} "
+      f"on {strongest.time.strftime('%Y-%m-%d')}")
+print(f"at {strongest.longitude}° longitude, {strongest.latitude}° latitude")
+print(f"The depth was {strongest.depth} km")
+print(f"The magnitude was {strongest.magnitude}")

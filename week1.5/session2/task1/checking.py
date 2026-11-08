@@ -1,7 +1,3 @@
-# Week 1.5, Session 2: Task 1
-
-# Add type checking to the constructor of Point
-
 import math
 
 
@@ -14,6 +10,11 @@ class Point:
         """
         Creates a Point, given x & y coordinates.
         """
+        if not isinstance(x, (int, float)):
+            raise TypeError(f"x must be int or float, got {type(x).__name__}")
+        if not isinstance(y, (int, float)):
+            raise TypeError(f"y must be int or float, got {type(y).__name__}")
+
         self.x = x
         self.y = y
 
@@ -30,7 +31,6 @@ class Point:
         return math.hypot(self.x - p.x, self.y - p.y)
 
 
-# Test program
 
 p = Point("two", "one")
 print(p.distance())
