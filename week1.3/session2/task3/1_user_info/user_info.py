@@ -13,3 +13,12 @@
 
 # Optional: extend this by using a loop to allow multiple people to enter their info in a row
 # If you want multiple people to add info without overwriting, consider append mode 'a'
+
+name = input("Enter name: ")
+age = (input("Enter age: "))
+favcolor = input("Enter fav color: ")
+
+with open("user_info.txt", "w") as file:
+    file.write(name+"\n")
+    file.write(age+"\n")
+    file.write(favcolor+"\n")
